@@ -2,7 +2,19 @@
   ansible.builtin.yum:
     name: nginx
     state: installed
-  register: out
-- name: out
-  debug:
-    msg: "{{out}}"
+
+- name: Remove old http documents content
+  ansible.builtin.file:
+    name: /usr/share/nginx/html
+    state: absent
+
+- name: Create http diectory
+  ansible.builtin.file:
+    name: /usr/share/nginx/html
+    state: directory
+
+- name: Download frontend content
+  ansible.builtin.unarchive:
+    src: https://roboshop-artifacts.s3.amazonaws.com/frontend.zip
+    dest: /usr/share/nginx/html
+    remote_src: yes
