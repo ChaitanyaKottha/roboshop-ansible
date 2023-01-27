@@ -3,7 +3,3 @@
   become: yes
   roles:
    - "{{ROLE_NAME}}"
-   
-- name: out
-  debug:
-    msg: "{{out}}"
