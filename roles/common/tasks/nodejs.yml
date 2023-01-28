@@ -44,4 +44,4 @@
     enabled: yes
 
 - name: load schema
-  import_tasks: schema.yml
+  import_tasks: "{{schema_type}}".yml
