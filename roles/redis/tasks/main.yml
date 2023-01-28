@@ -10,7 +10,7 @@
 - name: install redis
   ansible.builtin.yum:
     name: redis
-    sate: installed
+    state: installed
 
 - name: update redis listen file
   ansible.builtin.replace:
