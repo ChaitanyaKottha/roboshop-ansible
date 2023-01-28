@@ -12,7 +12,7 @@
     sate: installed
 
 - name: update redis listen file
-  ansible.bulitin.replace:
+  ansible.builtin.replace:
     path: /etc/redis.conf
     regexp: "127.0.0.1"
     replace: "0.0.0.0"
