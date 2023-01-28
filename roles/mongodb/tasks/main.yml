@@ -8,4 +8,17 @@
      name: mongodb-org
      state: installed
 
+- name: start mangodb service
+  ansible.builtin.systemd:
+    state: restarted
+    name: mongodb
+    enabled: yes
+
+- name: replace '127.0.0.1' with '0.0.0.0'
+  ansible.builtin.lineinfile:
+    path: /etc/mongod.conf
+    regexp: '^127.0.0.1'
+    line: 0.0.0.0
+
+
 
