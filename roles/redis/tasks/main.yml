@@ -11,6 +11,12 @@
     name: redis
     sate: installed
 
+- name: update redis listen file
+  ansible.bulitin.replace:
+    path: /etc/redis.conf
+    regexp: "127.0.0.1"
+    replace: "0.0.0.0"
+
 - name: start service
   ansible.builtin.systemd:
     name: redis
