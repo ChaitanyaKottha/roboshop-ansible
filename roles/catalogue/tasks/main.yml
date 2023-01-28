@@ -43,6 +43,16 @@
     state: restarted
     enabled: yes
 
+- name: copy mongodb repo file
+  ansible.builtin.copy:
+    src: mongodb.repo
+    dest: /etc/yum.repos.d/mongo.repo
+
+- name: install mongodb server
+  ansible.builtin.yum:
+    name: mongodb-org-shell
+    state: installed
+
 - name: load schema
   community.mongodb.mongodb_shell:
     login_host: mongodb-dev.devops-practice.online
