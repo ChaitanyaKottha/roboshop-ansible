@@ -8,17 +8,16 @@
      name: mongodb-org
      state: installed
 
+- name: update moongodb listen address replace '127.0.0.1' with '0.0.0.0'
+  ansible.builtin.replace:
+    path: /etc/mongod.conf
+    regexp: '127.0.0.1'
+    replace: '0.0.0.0'
+
 - name: start mangodb service
   ansible.builtin.systemd:
-    state: restarted
     name: mongodb
+    state: restarted
     enabled: yes
-
-- name: replace '127.0.0.1' with '0.0.0.0'
-  ansible.builtin.lineinfile:
-    path: /etc/mongod.conf
-    regexp: '^127.0.0.1'
-    line: 0.0.0.0
-
 
 
