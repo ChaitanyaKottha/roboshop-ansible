@@ -12,4 +12,4 @@
     chdir: /app
 
 - name: systemd setup
-  ansible.builtin.include_tasks: systemd.yml
+  ansible.builtin.include_tasks: "systemd.yml"
