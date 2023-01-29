@@ -25,4 +25,4 @@
 - name: password status
   ansible.builtin.debug:
     msg: password already changed
-    when: out.rc == 1
+  when: out.rc == 1
