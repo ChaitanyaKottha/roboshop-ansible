@@ -3,3 +3,5 @@
     name: maven
     state: installed
 
+- name: load app prereq
+  ansible.builtin.include_tasks: "app-prereq.yml"
