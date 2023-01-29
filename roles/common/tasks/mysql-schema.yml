@@ -2,7 +2,6 @@
   community.mysql.mysql_db:
     state: import
     name: all
-    encoding: latin1
     target: /app/schema/{{component}}.sql
     login_host: mysql-dev.devops-practice.online
     login_user: root
