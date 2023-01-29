@@ -6,26 +6,6 @@
     name: nodejs
     state: installed
 
-- name: add app user
-  ansible.builtin.user:
-    name: roboshop
-
-- name: remove old app content
-  ansible.builtin.file:
-    path: /app
-    state: absent
-
-- name: create app directory
-  ansible.builtin.file:
-    path: /app
-    state: directory
-
-- name: download {{component}} app content
-  ansible.builtin.unarchive:
-    src: https://roboshop-artifacts.s3.amazonaws.com/{{component}}.zip
-    dest: /app
-    remote_src: yes
-
 - name: install nodejs dependencies
   community.general.npm:
     path: /app
