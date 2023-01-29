@@ -18,4 +18,4 @@
     enabled: yes
 
 - name: reset mysql default password
-  ansible.builtin.shell: mysql_secure_installation --set-root-pass RoboShop@1
+  ansible.builtin.shell: mysql_secure_installation --set-root-pass {{root_mysql_password}}
