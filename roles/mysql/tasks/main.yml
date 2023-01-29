@@ -1,0 +1,21 @@
+- name: disable mysql 8
+  ansible.builtin.shell: dnf module disable mysql -y
+
+- name: copy repo file
+  ansible.builtin.copy:
+    src: mysql.repo
+    dest: /etc/yum.repos.d/mysql.repo
+
+- name: install mysql 5.7
+  ansible.builtin.yum:
+    name: mysql-community-server
+    state: installed
+
+- name: start service
+  ansible.builtin.systemd:
+    name: mysqld
+    state: restarted
+    enabled: yes
+
+- name: reset mysql default password
+  ansible.builtin.shell: mysql_secure_installation --set-root-pass RoboShop@1
