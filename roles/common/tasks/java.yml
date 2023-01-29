@@ -5,3 +5,10 @@
 
 - name: load app prereq
   ansible.builtin.include_tasks: "app-prereq.yml"
+
+- name: build maven
+  ansible.builtin.shell: mvn clean package
+  args:
+    chdir: /app
+
+- 
