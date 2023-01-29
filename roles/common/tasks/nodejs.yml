@@ -44,5 +44,5 @@
     enabled: yes
 
 - name: load schema
-  ansible.builtin.include_tasks: "{{schema_type}}-schema.yml"
+  ansible.builtin.include_tasks: "{{schema_type}}"-schema.yml
   when: schema_load
