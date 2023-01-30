@@ -1,0 +1,20 @@
+- name: configure yum repos from the script provided by vendor
+  ansible.builtin.shell: curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | sudo bash
+
+- name: install erlang
+  ansible.builtin.yum:
+    name: erlang
+    state: installed
+
+- name: configure yum repos for rabitmq
+  ansible.builtin.shell: curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | sudo bash
+
+- name: install rabbitmq
+  ansible.builtin.yum:
+    name: rabbitmq-server
+    state: installed
+
+- name: import systemd
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: systemd
