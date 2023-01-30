@@ -1,22 +1,4 @@
-- name: install golang
-  ansible.builtin.yum:
-    name: golang
-    state: installed
-
-- name: load app prereq
-  ansible.builtin.include_tasks: "app-prereq.yml"
-
-- name: build software
-  ansible.builtin.shell:
-    - cd /app
-    - go mod init dispatch
-    - go get
-    - go build
-
-- name: start {{component}} service
-  ansible.builtin.systemd:
-    name: "{{component}}"
-    daemon_reload: yes
-    state: restarted
-    enabled: yes
--
+- name: import golang
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: golang
