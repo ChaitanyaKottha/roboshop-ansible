@@ -9,10 +9,10 @@
 - name: load app prereq
   ansible.builtin.include_tasks: "app-prereq.yml"
 
-- name: build maven
-  ansible.builtin.shell: mvn clean package ; mv target/{{component}}-1.0.jar {{component}}.jar
-  args:
-    chdir: /app
+- name: download dependencies
+  ansible.builtin.pip:
+    requirments: /app/requirements.txt
+    executable: pip3.3
 
 - name: systemd setup
   ansible.builtin.include_tasks: "systemd.yml"
