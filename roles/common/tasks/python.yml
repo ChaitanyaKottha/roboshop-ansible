@@ -11,7 +11,7 @@
 
 - name: download dependencies
   ansible.builtin.pip:
-    requirments: /app/requirements.txt
+    requirements: /app/requirements.txt
     executable: pip3.3
 
 - name: SystemD Setup
