@@ -1,26 +1,29 @@
-- name: configure yum repos from the script provided by vendor
-  ansible.builtin.shell: curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | sudo bash
+- name: configure yum repos
+  ansible.builtin.shell: curl -s {{ item }} |  bash
+  loop:
+   - https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh
+   - https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh
 
-- name: install erlang
+- name: install erlang and rabbitmq
   ansible.builtin.yum:
-    name: erlang
+    name:
+      - erlang
+      - rabbitmq-server
     state: installed
 
-- name: configure yum repos for rabitmq
-  ansible.builtin.shell: curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | sudo bash
-
-- name: install rabbitmq
-  ansible.builtin.yum:
+- name: Start RabbitMQ Service
+  ansible.builtin.systemd:
     name: rabbitmq-server
-    state: installed
+    state: restarted
+    enabled: yes
 
-- name: import systemd
-  ansible.builtin.import_role:
-    name: common
-    tasks_from: systemd
-
-- name: change user and password
-  ansible.builtin.shell:
-    - rabbitmqctl add_user roboshop roboshop123
-    - rabbitmqctl set_user_tags roboshop administrator
-    - rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*"
+- name: Add Application User
+  community.rabbitmq.rabbitmq_user:
+    user: roboshop
+    password: "{{roboshop_rabbitmq_password}}"
+    vhost: /
+    configure_priv: .*
+    read_priv: .*
+    write_priv: .*
+    state: present
+    tags: administrator
