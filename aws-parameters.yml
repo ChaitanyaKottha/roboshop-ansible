@@ -9,3 +9,11 @@
         region: us-east-1
       loop:
         - {name: "dev.cart.REDIS_HOST", value: "redis-dev.devops-practice.online"}
+        - {name: "dev.cart.CATALOGUE_HOST", value: "catalogue-dev.devops-practice.online"}
+        - {name: "dev.catalogue.MONGO", value: "true"}
+        - {name: "dev.catalogue.MONGO_URL", value: "mongodb://mongodb-dev.devops-practice.online:27017/catalogue"}
+        - {name: "dev.frontend.CATALOGUE_URL", value: "http://catalogue-dev.devops-practice.online:8080/"}
+        - {name: "dev.frontend.CART_URL", value: "http://cart-dev.devops-practice.online:8080/"}
+        - {name: "dev.frontend.USER_URL", value: "http://user-dev.devops-practice.online:8080/"}
+        - {name: "dev.frontend.PAYMENT_URL", value: "http://payment-dev.devops-practice.online:8080/"}
+        - {name: "dev.frontend.SHIPPING_URL", value: "http://shipping-dev.devops-practice.online:8080/"}
