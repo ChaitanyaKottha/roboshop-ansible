@@ -12,7 +12,7 @@
 - name: download dependencies
   ansible.builtin.pip:
     requirements: /app/requirements.txt
-    executable: pip3.3
+    executable: pip3.6
 
 - name: SystemD Setup
   ansible.builtin.include_tasks: "systemd.yml"
