@@ -19,8 +19,13 @@
         - {name: "dev.frontend.SHIPPING_URL", value: "http://shipping-dev.devops-practice.online:8080/"}
         - {name: "dev.payment.CART_HOST", value: "cart-dev.devops-practice.online"}
         - {name: "dev.payment.CART_PORT", value: "8080"}
-        - { name: "dev.payment.USER_HOST", value: "user-dev.devops-practice.online" }
-        - { name: "dev.payment.USER_PORT", value: "8080" }
-        - { name: "dev.payment.AMQP_HOST", value: "rabbitmq-dev.devops-practice.online" }
-        - { name: "dev.payment.AMQP_USER", value: "roboshop" }
-        - { name: "dev.payment.AMQP_PASS", value: "roboshop123" }
+        - {name: "dev.payment.USER_HOST", value: "user-dev.devops-practice.online" }
+        - {name: "dev.payment.USER_PORT", value: "8080" }
+        - {name: "dev.payment.AMQP_HOST", value: "rabbitmq-dev.devops-practice.online" }
+        - {name: "dev.payment.AMQP_USER", value: "roboshop" }
+        - {name: "dev.payment.AMQP_PASS", value: "roboshop123" }
+        - {name: "dev.shipping.CART_ENDPOINT", value: "cart-dev.devops-practice.online:8080" }
+        - {name: "dev.payment.DB_HOST", value: "mysql-dev.devops-practice.online" }
+        - {name: "dev.user.MONGO", value: "true" }
+        - {name: "dev.user.MONGO_URL", value: "mongodb://mongodb-dev.devops-practice.online:27017/users" }
+        - {name: "dev.user.REDIS_HOST", value: "redis-dev.devops-practice.online"}
