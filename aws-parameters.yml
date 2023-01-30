@@ -1,0 +1,11 @@
+- name: create parameters
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: create/update AWS parameter
+      community.aws.ssm_parameter:
+        name: "{{item.name}}"
+        value: "{{item.value}}"
+        region: us-east-1
+      loop:
+        - {name: "dev.cart.REDIS_HOST", value: "redis-dev.devops-practice.online"}
