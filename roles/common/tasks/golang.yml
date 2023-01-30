@@ -6,17 +6,10 @@
 - name: load app prereq
   ansible.builtin.include_tasks: "app-prereq.yml"
 
-- name: build software
-  ansible.builtin.shell: cd /app
-
-- name: build software
-  ansible.builtin.shell: go mod init dispatch
-  
-- name: build software
-  ansible.builtin.shell: go get
-
-- name: build software
-  ansible.builtin.shell: go build
+- name: build maven
+  ansible.builtin.shell: go mod init dispatch ; go get ; go build
+  args:
+    chdir: /app
 
 - name: systemd setup
   ansible.builtin.include_tasks: "systemd.yml"
