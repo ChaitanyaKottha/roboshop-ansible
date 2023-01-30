@@ -9,10 +9,10 @@
 - name: build software
   ansible.builtin.shell: "{{item}}"
     loop:
-     - cd /app
-     - go mod init dispatch
-     - go get
-     - go build
+      - cd /app
+      - go mod init dispatch
+      - go get
+      - go build
 
 - name: systemd setup
   ansible.builtin.include_tasks: "systemd.yml"
