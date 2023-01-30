@@ -3,7 +3,7 @@
   connection: local
   tasks:
     - name: create/update AWS parameter
-      community.aws.ssm_parameter:
+      community.aws.aws_ssm_parameter_store:
         name: "{{item.name}}"
         value: "{{item.value}}"
         region: us-east-1
@@ -30,7 +30,7 @@
         - {name: "dev.user.REDIS_HOST", value: "redis-dev.devops-practice.online"}
 
       - name: create/update password
-        community.aws.ssm_parameter:
+        community.aws.aws_ssm_parameter_store:
           name: "{{item.name}}"
           value: "{{item.value}}"
           region: us-east-1
