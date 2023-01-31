@@ -29,11 +29,11 @@
         - {name: "dev.user.MONGO_URL", value: "mongodb://mongodb-dev.devops-practice.online:27017/users" }
         - {name: "dev.user.REDIS_HOST", value: "redis-dev.devops-practice.online"}
 
-      - name: create/update password
-        community.aws.aws_ssm_parameter_store:
+    - name: create/update password
+      community.aws.aws_ssm_parameter_store:
           name: "{{item.name}}"
           value: "{{item.value}}"
           region: us-east-1
           string_type: "SecureString"
-        loop:
+      loop:
           - { name: "dev.payment.AMQP_PASS", value: "roboshop123" }
