@@ -20,6 +20,6 @@
 
 - name: download {{component}} app content
   ansible.builtin.unarchive:
-    src: http://172.31.12.43:8081/repository/{{component}}/{{component}}-1.0.0.zip
+    src: http://172.31.12.43:8081/repository/{{component}}/{{component}}-{{app_version}}.zip
     dest: /app
     remote_src: yes

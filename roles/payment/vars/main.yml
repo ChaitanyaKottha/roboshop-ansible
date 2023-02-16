@@ -1,2 +1,3 @@
 component: payment
 schema_load: false
+app_version: 1.0.0

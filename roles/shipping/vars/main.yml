@@ -1,3 +1,4 @@
 component: shipping
 schema_load: true
 schema_type: mysql
+app_version: 1.0.0
