@@ -22,11 +22,11 @@
 - name: download {{component}} app content
   ansible.builtin.unarchive:
     src: http://{{nexus.user}}:{{nexus.pass}}@172.31.12.43:8081/repository/{{component}}/{{component}}-{{app_version}}.zip
-    dest: /app
+    dest: /usr/share/nginx/html
     remote_src: yes
   vars:
-    nexus.user: {{ lookup('aws_ssm', "nexus.user", region='us-east-1' ) }}
-    nexus.pass: {{ lookup('aws_ssm', "nexus.pass", region='us-east-1' ) }}
+    nexus.user: "{{ lookup('aws_ssm', 'nexus.user', region='us-east-1' ) }}"
+    nexus.pass: "{{ lookup('aws_ssm', 'nexus.pass', region='us-east-1' ) }}"
 
 - name: copy roboshop conf file to nginx
   ansible.builtin.template:
