@@ -9,8 +9,8 @@
     name: mongodb-org-shell
     state: installed
 
-- name: load schema
+- name: Load Schema
   community.mongodb.mongodb_shell:
-    login_host: mongodb-dev.devops-practice.online
+    login_host: mongodb-dev.devopsb70.online
     file: "/app/schema/{{component}}.js"
     idempotent: yes
