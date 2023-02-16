@@ -12,8 +12,14 @@
     path: /app
     state: directory
 
+#- name: download {{component}} app content
+#  ansible.builtin.unarchive:
+#    src: https://roboshop-artifacts.s3.amazonaws.com/{{component}}.zip
+#    dest: /app
+#    remote_src: yes
+
 - name: download {{component}} app content
   ansible.builtin.unarchive:
-    src: https://roboshop-artifacts.s3.amazonaws.com/{{component}}.zip
+    src: http://172.31.12.43:8081/repository/{{component}}/{{component}}-1.0.0.zip
     dest: /app
     remote_src: yes
