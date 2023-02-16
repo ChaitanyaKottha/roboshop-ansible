@@ -24,6 +24,7 @@
   vars:
     root_mysql_password: "{{ lookup('aws_ssm', '{{env}}.{{component}}.DB_ADMIN_PASS', region='us-east-1' ) }}"
 
+
 - name: password status
   ansible.builtin.debug:
     msg: password already changed
